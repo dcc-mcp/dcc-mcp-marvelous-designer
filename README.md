@@ -14,7 +14,7 @@ API; **no licensed host or engine acceptance has been completed**.
 - Save to a new ZPRJ; export OBJ, FBX or offline Alembic into an empty directory.
 - Hash and check the actual returned nonempty artifacts, restricted to configured roots.
 
-No arbitrary Python, shell, HTTP proxy, login, activation or UI input is exposed.
+The adapter adds no arbitrary Python, shell, HTTP proxy, login, activation or UI input.
 API presence does not prove a license is available. No vendor files are bundled.
 
 ## Host bootstrap
