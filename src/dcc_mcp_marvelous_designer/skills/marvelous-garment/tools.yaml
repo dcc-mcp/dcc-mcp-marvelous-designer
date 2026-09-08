@@ -1,0 +1,121 @@
+{
+  "tools": [
+    {
+      "name": "create_rectangle",
+      "description": "Create a rectangular pattern with native count readback; not a fitted garment.",
+      "source_file": "scripts/create_rectangle.py",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "width_mm": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "height_mm": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 10000
+          }
+        },
+        "required": [
+          "width_mm",
+          "height_mm"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "main",
+      "enforce_thread_affinity": true,
+      "timeout_hint_secs": 30,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "simulate_steps",
+      "description": "Run synchronous native simulation steps. Timeout does not imply native cancellation.",
+      "source_file": "scripts/simulate_steps.py",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "steps": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30,
+            "default": 1
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "main",
+      "enforce_thread_affinity": true,
+      "timeout_hint_secs": 120,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": false
+      }
+    },
+    {
+      "name": "export_garment",
+      "description": "Export to an empty directory and verify returned artifacts. ABC is offline cache.",
+      "source_file": "scripts/export_garment.py",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "directory": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string",
+            "enum": [
+              "obj",
+              "fbx",
+              "abc"
+            ],
+            "default": "obj"
+          },
+          "scale": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1000,
+            "default": 1
+          }
+        },
+        "required": [
+          "directory"
+        ],
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object"
+      },
+      "execution": "sync",
+      "job_strategy": "monolithic",
+      "affinity": "main",
+      "enforce_thread_affinity": true,
+      "timeout_hint_secs": 30,
+      "annotations": {
+        "read_only_hint": false,
+        "destructive_hint": true,
+        "idempotent_hint": false,
+        "open_world_hint": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+include LICENSE
+recursive-include docs *.md
+recursive-include src/dcc_mcp_marvelous_designer/skills *.md *.yaml *.py

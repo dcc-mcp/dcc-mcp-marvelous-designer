@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dcc-mcp-marvelous-designer"
+version = "0.1.0"
+description = "Typed Marvelous Designer garment workflows for DCC-MCP"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [{name = "loonghao", email = "hal.long@outlook.com"}]
+dependencies = ["dcc-mcp-core>=0.20.23,<1"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "PyYAML>=6"]
+
+[project.entry-points."dcc_mcp.adapters"]
+marvelous_designer = "dcc_mcp_marvelous_designer.server:MarvelousDesignerServer"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dcc_mcp_marvelous_designer = ["skills/**/*.md", "skills/**/*.yaml", "skills/**/*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py37"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
