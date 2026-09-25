@@ -55,6 +55,11 @@ jobs:
       # run on release PRs.
       - uses: googleapis/release-please-action@v5
         id: release
+        # On an explicit dispatch target the requested tag is authoritative.
+        # Running release-please here can create a new release whose tag then
+        # silently wins over the requested one in RELEASE_TAG below, so the
+        # operator asking to backfill v0.1.5 would get v0.1.6 published instead.
+        if: github.event_name != 'workflow_dispatch' || inputs.tag_name == ''
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           config-file: release-please-config.json
