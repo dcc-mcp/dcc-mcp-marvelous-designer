@@ -4,7 +4,7 @@ description: Typed Marvelous Designer project inspection and interchange.
 metadata:
   dcc-mcp:
     dcc: marvelous_designer
-    version: "0.1.0"
+    version: "0.1.1"
     layer: domain
     tags: [garment, project, interchange]
     tools: tools.yaml
