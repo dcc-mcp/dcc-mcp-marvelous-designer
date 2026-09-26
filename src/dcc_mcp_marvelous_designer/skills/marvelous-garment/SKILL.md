@@ -4,7 +4,7 @@ description: Typed Marvelous Designer pattern creation and bounded simulation.
 metadata:
   dcc-mcp:
     dcc: marvelous_designer
-    version: "0.1.0"
+    version: "0.1.1"
     layer: domain
     tags: [garment, pattern, simulation]
     tools: tools.yaml
